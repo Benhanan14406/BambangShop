@@ -78,6 +78,12 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 
+1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface so that multiple different types of observers can be notified without the publisher needing to know their concrete types. In BambangShop's case, a single Model struct is enough because all subscribers are external Rocket instances that receive notifications via HTTP POST requests to their URL. 
+
+2. Using Vec is sufficient but ineffective compared to using DashMap since, for functions that need to find a specific object, the entire list needs to be iterated through every time. Because id/url are unique identifiers, DashMap can be used and gives O(1) lookup. DashMap also enforces uniqueness, removing the need for extra checks that would be needed if Vec is used instead.
+
+3. DashMap is still needed because the Singleton pattern only ensures a sinlge instance of a data structure exists; it doesn't make that instance thread-safe. DashMap provides concurrent access safety on top of a guaranteed single instance.
+
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
