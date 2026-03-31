@@ -1,6 +1,6 @@
 use rocket::serde::{Serialize, Deserialize};
 use rocket::log;
-use rocket::serde::json::to_strig;
+use rocket::serde::json::to_string;
 use rocket::tokio;
 use bambangshop::REQWEST_CLIENT;
 use crate::model::notification::Notification;
