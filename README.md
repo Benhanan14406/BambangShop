@@ -93,3 +93,19 @@ This is the place for you to write reflections:
 3. Postman is a tool that helps testing REST APIs by allowing users to send HTTP requests to the endpoints and directly verify its responses. Postman's features include collections (groups endpoints together), response viewer (displays the JSON response body), and history (list of previous requests for quick re-runs).
 
 #### Reflection Publisher-3
+
+1. This tutorial uses the Push model where a publisher actively sends HTTP POST requests to subscribers' URLs.
+
+2. 
+Advantage: 
+- Subscribers can fetch data only when they need it and avoid being flooded by pushes.
+- Publisher becomes less complex as the logic for communication is mostly handled by the subscriber.
+- More resilient to subscriber downtime since subscribers that were offline can catch up by pulling new data.
+
+Disadvantages:
+- Notifications aren't real-time.
+- Pulling when there is no new data wastes resources.
+- Large amounts of subscribers pulling can overwhelm the publisher.
+
+3. If we decide to not use multi-threading in the
+notification process, the program will send the notifications sequentially and synchronously, causing slow response time (attends to one user ata time), poor scalability (performance worsens linearly), and the possibility of a single point of failure (a single unresponsive subscriber can cause the entire notification chain to stall).
